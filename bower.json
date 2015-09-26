@@ -1,0 +1,19 @@
+{
+  "name": "Personal website",
+  "version": "0.0.1",
+  "authors": [
+    "Thomas Dwyer <tomdy1990@gmail.com>"
+  ],
+  "description": "personal web page",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "angularjs#~1.4.5"
+  }
+}

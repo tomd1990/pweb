@@ -1,0 +1,179 @@
+@font-face {
+    font-family: 'BitOut';
+    src: url('../resources/BitOut.ttf');
+}
+
+html, body, .wrapper {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.wrapper {
+	background-image: url('../resources/City_side3.png'), linear-gradient(to bottom, rgba(255, 205, 164, 1) 0%, rgba(159, 78, 117, 1) 50%, rgba(0, 0, 49, 1) 100%);
+    background-repeat: repeat-x;
+    background-position: bottom;
+    background-attachment: fixed, scroll;
+    height:auto !important;
+    height:100%;
+    min-height:100%;
+
+
+}
+
+ul.main {
+	list-style-type: none;
+    margin: 0%;
+    padding: 0%;
+    overflow: hidden;
+    width: 100%;
+    height: 3%;
+}
+
+li {
+	background-color: black;
+    display: inline-block;
+    margin: 0%;
+    padding: 0%;
+    width: 25%;
+    height: 3%;
+    position: relative;
+    
+}
+
+canvas {
+	background-color: black;
+	margin: 0%;
+	padding: 0%;
+	width: 100%; 
+	height: 50%;
+}
+
+a#can {
+	height: 100%;
+	position:absolute;
+	float: left;
+}
+
+a.b {
+	left: 28%;
+	width:40%;
+}
+
+a.c {
+	right:24%;
+	width:76%;
+}
+
+a.d {
+	left: 19.5%;
+	width:47%;
+}
+
+a.e {
+	left: 1%;
+	width:66%;
+}
+
+.section {
+
+  
+  background-color:rgba(255,255,255,.65);
+  border: 1px solid black;
+}
+
+
+
+.outer-right {
+    
+    right: 0px;
+    background-position: right;
+    width: 0px;
+}
+
+.outer-left {
+    background-position: left;
+    width: 0px;
+    
+    left: 0px;
+}
+
+.outer-left, .outer-right {
+    position: absolute;
+    /*z-index: -1;*/
+    height: 100%;
+}
+
+.main-body {
+    font-family: Arial;
+    margin-right: -5px;
+    background-color: transparent;
+    color: #000000;
+    font-size: 18px;
+    margin-left: -5px;
+}
+
+.page {
+    margin: 0 auto;
+    z-index: 1;
+}
+
+.page {   
+    min-height: 100%;
+    max-width: 1060px;
+    min-width: 954px;
+    position: relative;
+}
+
+div {
+    display: block;
+}
+
+.text {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+#div-view {
+}
+
+/* slide in from the bottom */
+@keyframes rotateFall {
+    0%      { transform: rotateZ(0deg); }
+    20%     { transform: rotateZ(10deg); animation-timing-function: ease-out; }
+    40%     { transform: rotateZ(17deg); }
+    60%     { transform: rotateZ(16deg); }
+    100%    { transform: translateY(100%) rotateZ(17deg); }
+}
+
+/* slide in from the bottom */
+@keyframes slideOutLeft {
+    to      { transform: translateX(-100%);opacity: 0.0;  }
+}
+
+@keyframes scaleUp {
+    from    { opacity: 0.3; -webkit-transform: scale(0.5); }
+}
+
+
+
+.ng-enter { animation: scaleUp 0.6s both ease-in; z-index: 9999; position: relative; }
+.ng-leave {	animation: slideOutLeft 0.6s both ease-in; z-index:8888; position: absolute; width:100%;}
+
+.section h1, p {
+	margin: 5px;
+}
+
+/*p {
+	text-indent: 50px;
+}*/
+
+.button {
+    display: inline-block;
+    border:1px solid black;
+    padding: 1em;
+    background-color: #FFFFFF;
+    text-decoration: none;
+    color: black;
+}

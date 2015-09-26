@@ -1,0 +1,19 @@
+	//fade to color
+	var steps1 = 30;
+	var dr1 = (r - 255)/steps1;
+	var dg1 = (g - 255)/steps1;
+	var db1 = (br - 255)/steps1;
+	var t = 0;
+	var interval1 = setInterval(function() {
+		a.fillStyle = 'rgb(' + Math.round(255 + dr1*t) + ','
+							 + Math.round(255 + dg1*t) + ','
+							 + Math.round(255 + db1*t) + ')';
+		a.fillRect(x,y,1,1);
+		t++;
+		if( t == steps1) {
+			clearInterval(interval1);
+			a.fillStyle = color;
+			a.fillRect(x,y,1,1);
+		}
+
+ 	},30);
