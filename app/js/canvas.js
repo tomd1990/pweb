@@ -148,5 +148,9 @@ function color(cha,e)
 
 };
 
+function play() {
+	var click_sound = document.getElementById("sounds");
+	click_sound.play();
+}
 
 

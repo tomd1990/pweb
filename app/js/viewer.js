@@ -1,21 +1,27 @@
 angular.module('viewer', ['ngRoute', 'ngAnimate', 'ngSanitize'])
 
-.config(function($routeProvider){
-  $routeProvider.when("/",
-    {
-      templateUrl: "feed.html",
-      controller: "AppCtrl",
-      controllerAs: "app"
-    }
-  )
-  .when('/:message',
-  {
-  	 templateUrl:"feed.html",
-  	 controller: "AppCtrl",
-  	 controllerAs: "app"
-  }
-  );
-})
+.config(['$routeProvider', function($routeProvider) {
+    $routeProvider.
+      when('/:message', {
+        templateUrl: 'feed.html',
+        controller: 'AppCtrl'
+      }).
+      when('/post/:Id', {
+        templateUrl: 'post.html',
+        controller: 'PostCtrl'
+      }).
+      otherwise({
+        redirectTo: '/'
+      });
+}])
+
+.controller('PostCtrl', ['$http','$scope', '$routeParams', '$sce', function($http, $scope, $routeParams, $sce) {
+    $http.get('../../data/posts.json').success(function(data){
+		$scope.post = data[$routeParams.Id];		
+	
+	});
+
+}])
 
 .controller('AppCtrl', ['$http','$scope', '$routeParams', '$sce', function($http, $scope, $routeParams, $sce) {
   var self = this;
@@ -50,6 +56,8 @@ angular.module('viewer', ['ngRoute', 'ngAnimate', 'ngSanitize'])
 	default:
   		  $http.get('../../data/posts.json').success(function(data){
 			$scope.posts = data;
+			//exceptions
+			$scope.posts[1].content= $sce.trustAsHtml(data[1].content);
 			
 		});
 		break; 		
@@ -58,3 +66,4 @@ angular.module('viewer', ['ngRoute', 'ngAnimate', 'ngSanitize'])
 
 
 }]);
+

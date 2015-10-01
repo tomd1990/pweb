@@ -165,9 +165,9 @@ div {
 	margin: 5px;
 }
 
-/*p {
+p.indent {
 	text-indent: 50px;
-}*/
+}
 
 .button {
     display: inline-block;

@@ -1,6 +1,13 @@
 [
 	{
 		"title": "Hello World!",
-				"content":  "Hello and welcome to my site.  Here you will find tips and tricks, rants and raves, and various doodads to keep your mind wandering.  It is my sincerest wish that this site will not only showcase my abilities as a programmer, but will also show you who I am as a person.  With that in mind I want to emphasize that this is a personal site, and I will be expressing myself to the fullest of my capabilities. All, while staying out of correctional facilities.  So sit back, relax, butter up some popcorn and stay a while."	 
-	} 
+		"image": "#",
+		"content":  "<p class=\"indent\">Hello and welcome to my site.  Here you will find tips and tricks, rants and raves, and various doodads to keep your mind wandering.  It is my sincerest wish that this site will not only showcase my abilities as a programmer, but will also show you who I am as a person.  With that in mind I want to emphasize that this is a personal site, and I will be expressing myself to the fullest of my capabilities. All, while staying out of correctional facilities.  So sit back, relax, butter up some popcorn and stay a while.</p>"	 
+	},
+	{
+		"title": "Ode to SF3",
+		"content":"<img src=\"../resources/img_0.jpg\" alt=\"Street Fighter 3 Third Strike logo\"><br><p class=\"indent\">Its hard to describe how good this game is.  Yes it axed many of the beloved SF2 characters, yes it redefined core mechanics, yes it had balancing issues.  But despite all this, no other street fighter even came close to surpassing it.  The game was incredibly polished, and had a level of personality that just oozed out from every seam.  The soundtrack, the character sprites, and the overall feel of the game had an incredible amount of detail.  Something that newer games fail to capture.  To put it simply SF3 had soul and style, and to this day stands out as a masterpiece in an ocean of the bland and mediocre.</p><a class=\"more\" href=\"/app/views/home.html#/post/1\" onclick=\"play()\">Read on</a>" ,
+		"readmorelink":"button sound",
+		"content_e":"Its hard to descriffffffffffffffffffffffffffffffffffffffffffffffbe"
+	}
 ]

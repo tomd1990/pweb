@@ -23,7 +23,7 @@
       <div class="main-body">
         <img src="../resources/logo_clouds.png" alt="Logo" class="logo" width="30%" height = "30%" position = "fixed"> 
     	   <ul class="main">
-    		  <li class="b"><canvas id ="b" height =34 ></canvas><a class="b" id="can" onmousemove="color('b',event)" href="/app/views/home.html#/"></a></li><li class="c"><canvas id ="c" height =34></canvas><a class="c" id="can" onmousemove="color('c',event)" href="/app/views/home.html#/projects"></a></li><li class="d"><canvas id ="d" height =34></canvas><a class="d" id="can" onmousemove="color('d',event)" href="/app/views/home.html#/about"></a></li><li class="e"><canvas id ="e" height =34></canvas><a class="e" id="can" onmousemove="color('e',event)" href="/app/views/home.html#/contact"></a></li>
+    		  <li class="b"><canvas id ="b" height =34 ></canvas><a class="b" id="can" onmousemove="color('b',event)" href="/app/views/home.html#/home"></a></li><li class="c"><canvas id ="c" height =34></canvas><a class="c" id="can" onmousemove="color('c',event)" href="/app/views/home.html#/projects"></a></li><li class="d"><canvas id ="d" height =34></canvas><a class="d" id="can" onmousemove="color('d',event)" href="/app/views/home.html#/about"></a></li><li class="e"><canvas id ="e" height =34></canvas><a class="e" id="can" onmousemove="color('e',event)" href="/app/views/home.html#/contact"></a></li>
    	    </ul>
         <!-- SECTIONS HERE -->
         <div ng-app="viewer">
@@ -34,7 +34,9 @@
     </div>
 
 
-
+  <audio id="sounds">
+    <source src="../resources/LetsGo.mp3">
+  </audio>
   <script src="../js/canvas.js"></script>
   <script src="../../node_modules/randomcolor/randomColor.js"></script>
   <script src="../js/viewer.js"></script>
