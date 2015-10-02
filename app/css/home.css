@@ -121,7 +121,7 @@ a.e {
 .page {   
     min-height: 100%;
     max-width: 1060px;
-    min-width: 954px;
+    min-width: 320px;
     position: relative;
 }
 
@@ -179,8 +179,13 @@ p.indent {
 }
 
 iframe {
+	max-width: 100%;
 	display: block;
 	margin: 0 auto;
+}
+
+img {
+	max-width: 100%;
 }
 
 img.Q {
