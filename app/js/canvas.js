@@ -148,8 +148,8 @@ function color(cha,e)
 
 };
 
-function play() {
-	var click_sound = document.getElementById("sounds");
+function play(song) {
+	var click_sound = document.getElementById(song);
 	click_sound.play();
 }
 
