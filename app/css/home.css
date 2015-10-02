@@ -177,3 +177,14 @@ p.indent {
     text-decoration: none;
     color: black;
 }
+
+iframe {
+	display: block;
+	margin: 0 auto;
+}
+
+img.Q {
+	display: block;
+    margin-left: auto;
+    margin-right: auto;
+}

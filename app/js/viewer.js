@@ -11,13 +11,14 @@ angular.module('viewer', ['ngRoute', 'ngAnimate', 'ngSanitize'])
         controller: 'PostCtrl'
       }).
       otherwise({
-        redirectTo: '/'
+        redirectTo: '/home'
       });
 }])
 
 .controller('PostCtrl', ['$http','$scope', '$routeParams', '$sce', function($http, $scope, $routeParams, $sce) {
     $http.get('../../data/posts.json').success(function(data){
-		$scope.post = data[$routeParams.Id];		
+		$scope.post = data[$routeParams.Id];
+		$scope.post.content_e= $sce.trustAsHtml(data[$routeParams.Id].content_e);		
 	
 	});
 
