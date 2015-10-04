@@ -1,21 +1,47 @@
 var http = require("http");
-var connect = require('connect');
+var url = require('url');
+var fs = require('fs');
+var io = require('socket.io');
 
-console.log('\n\n--- Node Version: ' + process.version + ' ---');
+var server = http.createServer(function(request, response){
+    console.log('Connection');
+    var path = url.parse(request.url).pathname;
 
-// Set up Connect routing
-var app = connect()
-    .use(connect.static(__dirname + '/app'))
-    .use(function(req, res) {
-        console.log('Could not find handler for: ' + req.url);
-        res.end('Could not find handler for: ' + req.url);
-    })
-    .use(function(err, req, res, next) {
-        console.log('Error trapped by Connect: ' + err.message + ' : ' + err.stack);
-        res.end('Error trapped by Connect: ' + err.message);
-    });
+    switch(path){
+        case '/':
+            response.writeHead(200, {'Content-Type': 'text/html'});
+            response.write('hello world');
+            response.end();
+            break;
+        case '/sockets_tut.html':
+            fs.readFile(__dirname + path, function(error, data){
+                if (error){
+                    response.writeHead(404);
+                    response.write("opps this doesn't exist - 404");
+                    response.end();
+                }
+                else{
+                    response.writeHead(200, {"Content-Type": "text/html"});
+                    response.write(data, "utf8");
+                    response.end();
+                }
+            });
+            break;
+        default:
+            response.writeHead(404);
+            response.write("opps this doesn't exist - 404");
+            response.end();
+            break;
+    }
+});
 
-// Start node server listening on specified port -----
-http.createServer(app).listen(80);
+server.listen(8001);
 
-console.log('HTTP server listening on port 80');
+io = io.listen(server);
+io.on('connection', function(socket){
+	console.log('a user connected');
+
+	socket.on('login', function(data) {
+	console.log(data.name + 'logged in and added to play q');
+	});
+});

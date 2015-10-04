@@ -1,0 +1,14 @@
+<html>
+  <head>
+ <script src="https://cdn.socket.io/socket.io-1.3.7.js"></script>
+  </head>
+  <body>
+    <script>
+      var socket = io.connect();
+      function one(){
+      socket.emit('login', {'name': 'tomd1990'});
+  	  }
+    </script>
+    <div>This is our socket.html file<a href="javascript:one();">Bottom Text</a></div>
+  </body>
+</html>
