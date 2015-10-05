@@ -1,6 +1,6 @@
 [
 	{
 		"title":"About Me",
-		"content": " "
+		"content": "<p class=\"indent\">My name is Thomas Dwyer, I’m a recent graduate from UCLA’s Electrical Engineering program, where I learned how to destroy capacitors, and that instant noodles with cheese is in fact a valid form of breakfast.  Since then I find myself tinkering away at things, and learning new ways to make my ideas come to life, mostly through the wonders and joys of programming.  I’m not an algorithm master, nor do I have an immaculate UNIX beard, but what I do have is a passion to learn and a desire to help others.  Both of which started this long and rewarding journey.  When I’m not busy conquering the world, you’ll find me collecting hot sauce bottles, crafting wood, or working with MS paint to create new pixel trash, like the ones on this page.</p><br><img class=\"me\" src=\"../resources/me.png\">"
 	}
 ]
