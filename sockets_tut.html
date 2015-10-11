@@ -8,6 +8,14 @@
       function one(){
       socket.emit('login', {'name': 'tomd1990'});
   	  }
+
+      socket.on('render', function(data) {
+          for(x =0; x < 8; x++)
+          {
+              document.write()
+          }
+      });
+
     </script>
     <div>This is our socket.html file<a href="javascript:one();">Bottom Text</a></div>
   </body>

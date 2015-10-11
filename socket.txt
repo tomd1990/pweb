@@ -1,0 +1,146 @@
+//Chess and Socket.io, Proof of Concentp
+
+io = io.listen(server);
+
+the on method maps a method name to an anonymous callback functions
+
+the emit method maps a JSON Object to a name
+
+obain unique socket from socket.id
+
+// Hello.
+//
+// This is JSHint, a tool that helps to detect errors and potential
+// problems in your JavaScript code.
+//
+// To start, simply enter some JavaScript anywhere on this page. Your
+// report will appear on the right side.
+//
+// Additionally, you can toggle specific options in the Configure
+// menu.
+
+var http = require("http");
+var url = require('url');
+var fs = require('fs');
+var io = require('socket.io');
+
+function update(map, move) {
+  var row_init = move.begin[0];
+  var col_init = move.begin[1];
+  var row_end = move.end[0];
+  var col_end = move.end[1];
+  
+  map.grid[row_end][col_end] = map.grid[row_init][col_init];
+  map.grid[row_init][col_init] ="E";
+  
+}
+
+var server = http.createServer(function(request, response){
+    console.log('Connection');
+    var path = url.parse(request.url).pathname;
+
+    switch(path){
+        case '/':
+            response.writeHead(200, {'Content-Type': 'text/html'});
+            response.write('hello world');
+            response.end();
+            break;
+        case '/sockets_tut.html':
+            fs.readFile(__dirname + path, function(error, data){
+                if (error){
+                    response.writeHead(404);
+                    response.write("opps this doesn't exist - 404");
+                    response.end();
+                }
+                else{
+                    response.writeHead(200, {"Content-Type": "text/html"});
+                    response.write(data, "utf8");
+                    response.end();
+                }
+            });
+            break;
+        default:
+            response.writeHead(404);
+            response.write("opps this doesn't exist - 404");
+            response.end();
+            break;
+    }
+});
+
+server.listen(8001);
+
+var list = [];
+var game = 0;
+var board = {
+  "grid": [
+    ["W_R", "W_K", "W_B", "W_Q", "W_K", "W_B", "W_K", "W_R"],
+    ["W_P", "W_P", "W_P", "W_P", "W_P", "W_P", "W_P", "W_P"],
+    ["E",  "E",  "E", "E", "E", "E", "E", "E"],
+    ["E",  "E",  "E", "E", "E", "E", "E", "E"],
+    ["E",  "E",  "E", "E", "E", "E", "E", "E"],
+    ["E",  "E",  "E", "E", "E", "E", "E", "E"],
+    ["B_P", "B_P", "B_P", "B_P", "B_P", "B_P", "B_P", "B_P"],
+    ["B_R", "B_K", "B_B", "B_Q", "B_K", "B_B", "B_K", "B_R"]
+  ]
+};
+
+io = io.listen(server);
+io.on('connection', function(socket){
+  console.log('a user connected');
+
+  socket.on('login', function(data) {
+  console.log(data.name + 'logged in and added to play q');
+      list.push(
+        {   
+            login: data.name,
+            sock: socket.id
+        });
+  
+  //render will draw out the chess board
+  socket.emit('render', board);
+  
+  //send ticket_num to client
+  
+  if( list.length >= 2 && game === 0)
+  {
+    game = 1;
+    io.to(list[0].sock).emit(); //white
+    io.to(list[1].sock).emit(); //black
+    //all will be initializede to observers client side   
+  }
+    
+  });
+  
+  
+  socket.on('move_rec', function(data) {
+    //Update local copy of Board, and send it off to all the clients
+    update(board, data);
+    socket.emit('render', board);
+  });
+  
+  socket.on('end', function(data) {
+    game = 0;
+    var temp;
+    if(data.winner === "W")
+    {
+      //White player is Victorious!
+      temp = list.splice(1,1);
+      list.push(temp);
+      
+    }
+    else 
+    {
+      temp = list.splice(0,1);
+      list.push(temp);
+    }
+      
+  });
+  
+  //on DC remove from queue TODO: fix queue system
+  
+  
+  
+  
+  
+});
+

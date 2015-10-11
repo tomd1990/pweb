@@ -36,12 +36,20 @@ var server = http.createServer(function(request, response){
 });
 
 server.listen(8001);
-
+var list = [];
 io = io.listen(server);
 io.on('connection', function(socket){
 	console.log('a user connected');
 
 	socket.on('login', function(data) {
 	console.log(data.name + 'logged in and added to play q');
+    list.push(
+        {   
+            login: data.name,
+            sock: socket.id
+        });
 	});
+
+    
+
 });
